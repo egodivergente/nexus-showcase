@@ -12,6 +12,30 @@ Nexus conecta conversación, generación multimedia, guion y edición de vídeo 
 mismo espacio de trabajo. Las ideas, las referencias, los archivos y el montaje
 forman parte del mismo proyecto.
 
+## Nexus en uso
+
+Capturas reales de la aplicación Android · 26 de noviembre de 2026.
+
+<table>
+  <tr>
+    <th align="center">Agente creativo</th>
+    <th align="center">ArtBox</th>
+    <th align="center">Nexus Cut</th>
+  </tr>
+  <tr>
+    <td align="center"><a href="assets/screenshots/agente-inicio.jpg"><img src="assets/screenshots/agente-inicio.jpg" width="230" alt="Inicio del agente de Nexus con propuestas para crear"></a></td>
+    <td align="center"><a href="assets/screenshots/artbox-video.jpg"><img src="assets/screenshots/artbox-video.jpg" width="230" alt="Catálogo de familias de modelos de vídeo en ArtBox"></a></td>
+    <td align="center"><a href="assets/screenshots/cut-agente.jpg"><img src="assets/screenshots/cut-agente.jpg" width="230" alt="Editor Nexus Cut con línea de tiempo y panel del agente"></a></td>
+  </tr>
+  <tr>
+    <td align="center">Plantea lo que quieres crear.</td>
+    <td align="center">Elige las herramientas de generación.</td>
+    <td align="center">Edita con el agente dentro del montaje.</td>
+  </tr>
+</table>
+
+**[Ver la galería completa: conversación, modelos, referencias, edición y Flow →](docs/GALERIA.md)**
+
 ## Del proyecto al resultado
 
 | Espacio | Qué aporta |
@@ -21,6 +45,7 @@ forman parte del mismo proyecto.
 | **Guion** | Organización de escenas, planos, personajes, storyboard y referencias. |
 | **Nexus Cut** | Edición multipista, recorte y reordenación de clips, previsualización y exportación, con asistencia del agente. |
 | **Biblioteca** | Archivo de materiales importados y generados para encontrarlos y reutilizarlos. |
+| **Flow** | Vista integrada de Google Flow para acceder a sus proyectos y materiales desde Nexus. |
 
 ## Decisiones de producto
 
