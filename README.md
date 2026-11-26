@@ -34,7 +34,9 @@ Capturas reales de la aplicación Android · 26 de noviembre de 2026.
   </tr>
 </table>
 
-**[Ver la galería completa: conversación, modelos, referencias, edición y Flow →](docs/GALERIA.md)**
+**[Abrir el escaparate visual con las 17 capturas →](https://egodivergente.github.io/nexus-showcase/)**
+
+También puedes recorrer la [galería completa dentro de GitHub](docs/GALERIA.md).
 
 ## Del proyecto al resultado
 

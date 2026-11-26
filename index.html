@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09131f">
+  <meta name="description" content="Nexus, el proyecto de Vidal Domínguez Rodríguez: agente de IA, generación multimedia y edición de vídeo conectados en un mismo espacio creativo. Descubre la aplicación en 17 capturas reales de Android.">
+  <meta property="og:title" content="NEXUS — De la idea al montaje">
+  <meta property="og:description" content="Un agente creativo, tus modelos y tus materiales. Un proyecto de Vidal Domínguez Rodríguez.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://egodivergente.github.io/nexus-showcase/nexus-logo.png">
+  <meta property="og:image:alt" content="Logo de Nexus, el agente creativo con IA">
+  <title>NEXUS — De la idea al montaje</title>
+  <link rel="icon" href="nexus-logo.png" type="image/png">
+  <style>
+    :root{color-scheme:dark;--bg:#09131f;--surface:#101f30;--ink:#f0f5f7;--muted:#9daebf;--accent:#7ce4e8;--line:rgba(171,203,226,.15);--max:1280px;--header:82px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+    body.modal-open{overflow:hidden}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{font:inherit;color:inherit}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer}
+    button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+    [hidden]{display:none!important}
+    ::selection{background:var(--accent);color:var(--bg)}
+    img{display:block;max-width:100%}
+    svg{display:block;flex-shrink:0}
+    .wrap{width:min(var(--max),calc(100% - 96px));margin-inline:auto}
+    .skip{position:fixed;z-index:100;top:12px;left:12px;padding:10px 18px;background:var(--accent);color:var(--bg);transform:translateY(-150%);border-radius:8px}
+    .skip:focus{transform:none}
+    .site-header{position:sticky;top:0;z-index:20;background:rgba(9,19,31,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{min-height:var(--header);display:flex;align-items:center;gap:32px}
+    .brand{display:inline-flex;align-items:center;gap:13px;margin-right:auto;font-weight:750;font-size:20px;letter-spacing:.2em}
+    .brand img{width:37px;height:37px;object-fit:contain}
+    .nav-links{display:flex;gap:30px;font-size:14px;color:var(--muted)}
+    .nav-links a{transition:color .2s}
+    .nav-links a:hover{color:var(--ink)}
+    .status{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:650;letter-spacing:.045em;white-space:nowrap;border:1px solid var(--line);padding:8px 12px;border-radius:30px;color:#c0ccd8}
+    .status::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    .hero{position:relative;overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1fr 1.12fr;align-items:center;gap:36px;padding-block:76px 66px;min-height:790px}
+    .eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 26px}
+    .eyebrow::before{content:"";width:26px;height:1px;background:currentColor}
+    h1{font-size:clamp(56px,6.3vw,87px);font-weight:650;line-height:1.04;letter-spacing:-.065em;margin:0 0 29px}
+    h1 span{display:block;color:var(--accent)}
+    .hero-copy>p{font-size:18px;line-height:1.75;color:var(--muted);max-width:410px;margin:0 0 34px}
+    .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-bottom:35px}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:22px;padding:15px 22px;border-radius:9px;background:var(--accent);color:#09202a;font-size:14px;font-weight:750;transition:background .2s,transform .2s;border:1px solid transparent}
+    .button:hover{background:#a8f2f1;transform:translateY(-2px)}
+    .text-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;border-bottom:1px solid rgba(157,174,191,.35);padding-block:5px}
+    .text-link:hover{color:var(--accent);border-color:var(--accent)}
+    .hero-meta{display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.03em;color:#91a2b3}
+    .hero-meta .divider{width:3px;height:3px;background:#54697d;border-radius:50%}
+    .hero-collage{position:relative;height:640px;isolation:isolate;min-width:0}
+    .hero-collage::before{content:"";position:absolute;inset:3% -15% 0;background:radial-gradient(ellipse at 50% 50%,rgba(70,169,183,.16),transparent 67%);z-index:-1}
+    .hero-shot{position:absolute;padding:0;background:#0d1927;border:1px solid rgba(158,199,220,.25);border-radius:20px;box-shadow:0 28px 70px rgba(0,0,0,.42);transition:translate .3s,border-color .3s;cursor:zoom-in;line-height:0}
+    .hero-shot:hover{translate:0 -10px;border-color:var(--accent);z-index:5}
+    .hero-shot img{width:100%;height:auto;border-radius:19px}
+    .hero-shot.left{width:35%;left:1%;top:2%;transform:rotate(-10deg);z-index:1}
+    .hero-shot.center{width:42%;left:30%;top:6%;z-index:3}
+    .hero-shot.right{width:35%;right:-2%;top:21%;transform:rotate(9deg);z-index:2}
+    .collage-label{position:absolute;bottom:0;left:50%;translate:-50% 0;display:flex;align-items:center;gap:10px;color:#aab9c7;font-size:11px;white-space:nowrap}
+    .collage-label span{width:18px;height:1px;background:#4c6b7d}
+    .section-rule{border-top:1px solid var(--line)}
+    .product{padding-block:76px 84px}
+    .section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px}
+    .section-kicker{font-size:11px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin:0 0 12px}
+    h2{font-size:clamp(29px,3.2vw,44px);font-weight:600;letter-spacing:-.045em;line-height:1.15;margin:0}
+    .section-note{max-width:350px;font-size:14px;line-height:1.7;color:var(--muted);margin:0}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .product-item{padding:29px 32px 31px 0}
+    .product-item+.product-item{padding-left:32px;border-left:1px solid var(--line)}
+    .product-number{font-size:11px;color:#70899e;letter-spacing:.08em;margin-bottom:23px;display:block}
+    .product-item h3{font-size:20px;font-weight:550;letter-spacing:-.025em;margin:0 0 10px}
+    .product-item p{font-size:14px;line-height:1.8;color:var(--muted);margin:0;max-width:300px}
+    .gallery-section{padding-block:12px 90px}
+    .gallery-heading{align-items:center;margin-bottom:26px}
+    .gallery-heading .section-note{font-size:12px;max-width:none;text-align:right}
+    .gallery-heading .section-note span{display:block;color:#71869a;font-size:11px;margin-top:4px}
+    .filter-row{display:flex;align-items:center;gap:18px;justify-content:space-between;margin-bottom:30px}
+    .filters{display:flex;gap:7px;flex-wrap:wrap}
+    .filter{border:1px solid var(--line);border-radius:7px;background:transparent;padding:9px 13px;font-size:12px;color:#a5b7c7;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+    .filter:hover{border-color:#526c7e;color:var(--ink)}
+    .filter[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#102b36;font-weight:700}
+    .filter-count{font-size:10px;margin-left:6px;opacity:.65}
+    .result-count{font-size:11px;color:#8195a7;white-space:nowrap}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px;align-items:start}
+    .capture{min-width:0}
+    .capture-button{position:relative;display:block;width:100%;padding:0;border:1px solid #273d50;border-radius:12px;background:#0c1724;cursor:zoom-in;transition:transform .25s,border-color .25s,box-shadow .25s;line-height:0}
+    .capture-button:hover{transform:translateY(-5px);border-color:#6ab6bd;box-shadow:0 18px 40px #0003}
+    .capture-button img{width:100%;height:auto;border-radius:11px;aspect-ratio:709/1536;object-fit:contain}
+    .zoom-hint{position:absolute;right:10px;top:10px;display:flex;justify-content:center;align-items:center;width:29px;height:29px;border:1px solid #aacfd34d;border-radius:50%;background:#0c1826dc;color:#c9eff0;font-size:20px;line-height:1;opacity:0;transition:opacity .2s}
+    .capture-button:hover .zoom-hint,.capture-button:focus-visible .zoom-hint{opacity:1}
+    .capture-label{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-top:17px}
+    .capture h3{font-size:14px;font-weight:650;line-height:1.4;margin:0;letter-spacing:-.01em}
+    .capture-index{font-size:10px;color:#5b748b;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+    .capture-caption{margin:7px 0 0;font-size:12px;color:var(--muted);line-height:1.65}
+    .gallery-end{display:flex;align-items:center;justify-content:center;gap:13px;color:#7890a3;font-size:11px;margin-top:45px}
+    .gallery-end::before,.gallery-end::after{content:"";width:35px;height:1px;background:var(--line)}
+    .author-section{padding-block:67px 74px;background:#0c1826;border-block:1px solid var(--line)}
+    .author-grid{display:grid;grid-template-columns:1fr 1fr;gap:10%;align-items:start}
+    .author-section h2{font-size:35px;max-width:400px;margin-bottom:18px}
+    .author-description{font-size:15px;line-height:1.8;color:var(--muted);max-width:430px;margin:0 0 25px}
+    .author-links{display:flex;gap:25px}
+    .project-detail{border-top:1px solid var(--line);padding:19px 0}
+    .project-detail:first-child{padding-top:0;border-top:0}
+    .project-detail h3{font-size:12px;color:#d6e0e9;letter-spacing:.025em;font-weight:650;margin:0 0 8px}
+    .project-detail p{font-size:13px;line-height:1.8;color:var(--muted);margin:0;max-width:430px}
+    .footer{padding-block:25px;display:flex;justify-content:space-between;gap:20px;color:#7890a3;font-size:11px}
+    .footer strong{font-size:11px;letter-spacing:.16em;font-weight:650;color:#9fb1c2}
+    .footer a:hover{color:var(--accent)}
+    dialog{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(5,12,20,.985);color:var(--ink)}
+    dialog[open]{display:flex;flex-direction:column}
+    dialog::backdrop{background:#050c14ed}
+    .viewer-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 28px;border-bottom:1px solid var(--line);flex-shrink:0;min-height:86px}
+    .viewer-heading{min-width:0}
+    .viewer-heading h2{font-size:17px;letter-spacing:-.015em;line-height:1.35}
+    .viewer-counter{display:block;font-size:11px;letter-spacing:.04em;color:var(--muted);margin-top:4px}
+    .viewer-controls{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .icon-button{border:1px solid #34485a;background:#142230;min-width:40px;height:40px;padding:0 12px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#d5e5ed;font-size:20px}
+    .icon-button:hover{background:#25394a;border-color:#7ba9b2}
+    .zoom-button{font-size:12px;gap:8px}
+    .viewer-body{position:relative;flex:1;min-height:0}
+    .viewer-canvas{height:100%;overflow:auto;overscroll-behavior:contain;padding:20px 70px;scrollbar-color:#456073 transparent}
+    .viewer-image-wrap{display:flex;align-items:center;justify-content:center;min-height:100%;min-width:100%}
+    #viewer-image{max-height:calc(100dvh - 205px);max-width:100%;width:auto;height:auto;object-fit:contain;cursor:zoom-in;box-shadow:0 10px 70px #0006}
+    .is-zoomed .viewer-image-wrap{width:max-content;height:max-content;align-items:flex-start}
+    .is-zoomed #viewer-image{max-height:none;max-width:none;cursor:zoom-out}
+    .viewer-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:#142230ed}
+    .viewer-prev{left:19px}
+    .viewer-next{right:19px}
+    .viewer-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-shrink:0;min-height:72px;padding:17px 28px;border-top:1px solid var(--line)}
+    .viewer-caption{margin:0;font-size:13px;line-height:1.5;color:#b2c1ce}
+    .viewer-help{margin:0;color:#698397;font-size:11px;white-space:nowrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(min-width:1500px){.hero-collage{height:675px}}
+    @media(max-width:1150px){.wrap{width:calc(100% - 64px)}.hero-inner{min-height:720px;gap:20px;padding-block:55px}.hero-collage{height:570px}.hero-shot.center{left:25%;width:46%;top:7%}.hero-shot.left{width:38%;left:0;top:4%}.hero-shot.right{width:38%;right:0;top:24%}.gallery-grid{gap:30px 18px}.hero-copy>p{font-size:17px}.hero-actions{gap:18px}.filter-row{align-items:flex-start}.result-count{padding-top:10px}}
+    @media(max-width:900px){:root{--header:74px}.wrap{width:calc(100% - 48px)}.nav{gap:20px}.nav-links{gap:21px}.hero-inner{grid-template-columns:1fr;padding-top:58px;gap:35px;min-height:auto}.hero-copy{text-align:center;max-width:620px;margin-inline:auto}.eyebrow,.hero-actions,.hero-meta{justify-content:center}.hero-copy>p{margin-inline:auto;max-width:490px}.hero-actions{margin-bottom:24px}h1{font-size:74px;letter-spacing:-.065em}.hero-collage{height:660px;max-width:610px;width:100%;margin-inline:auto}.hero-shot.center{left:29%;width:42%;top:4%}.hero-shot.left{left:1%;width:35%;top:1%}.hero-shot.right{right:0;width:35%;top:20%}.product{padding-block:57px 65px}.section-top{align-items:flex-start}.section-note{max-width:290px}.product-item{padding-right:22px}.product-item+.product-item{padding-left:22px}.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:31px 18px}.filter-row{gap:8px;flex-direction:column}.result-count{padding-top:4px}.author-grid{gap:7%}.author-section h2{font-size:30px}.viewer-help{display:none}}
+    @media(max-width:620px){:root{--header:68px}html{scroll-padding-top:88px}.wrap{width:calc(100% - 36px)}.nav{gap:13px}.brand{font-size:16px;gap:9px;letter-spacing:.16em}.brand img{width:31px;height:31px}.nav-links{font-size:12px;gap:16px}.nav-links a:first-child{display:none}.status{display:none}.hero-inner{padding-top:44px;padding-bottom:39px;gap:35px}.eyebrow{font-size:9px;letter-spacing:.14em;margin-bottom:23px}h1{font-size:clamp(51px,13vw,75px);line-height:1.06;margin-bottom:23px}.hero-copy>p{font-size:15px;line-height:1.75;max-width:350px;margin-bottom:26px}.hero-actions{gap:18px;margin-bottom:23px}.button{font-size:12px;gap:13px;padding:13px 16px}.text-link{font-size:12px}.hero-meta{font-size:9px;gap:7px}.hero-collage{height:calc((100vw - 36px) * 1.15);max-height:615px}.hero-shot{border-radius:13px}.hero-shot img{border-radius:12px}.hero-shot.left{left:1%;top:0}.hero-shot.center{left:28%;top:4%;width:43%}.hero-shot.right{right:0;top:19%}.collage-label{bottom:0;font-size:9px}.product{padding-block:43px 46px}.section-top{display:block;margin-bottom:27px}.section-note{margin-top:17px;max-width:380px;font-size:13px}.section-kicker{font-size:9px;margin-bottom:10px}h2{font-size:31px}.product-grid{grid-template-columns:1fr}.product-item,.product-item+.product-item{display:grid;grid-template-columns:35px 1fr;column-gap:8px;border-left:0;padding:22px 0}.product-item+.product-item{border-top:1px solid var(--line)}.product-number{grid-row:1/3;margin:3px 0 0;font-size:10px}.product-item h3{font-size:18px;margin-bottom:7px}.product-item p{font-size:13px;max-width:100%}.gallery-section{padding-top:10px;padding-bottom:51px}.gallery-heading .section-note{text-align:left;font-size:11px;margin-top:14px}.gallery-heading .section-note span{font-size:10px}.filter-row{margin-bottom:23px}.filters{width:100%;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding:5px 2px 12px;scrollbar-width:thin;scrollbar-color:#385367 transparent}.filter{font-size:11px;padding:8px 11px}.result-count{font-size:10px}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 14px}.capture-button{border-radius:9px}.capture-button img{border-radius:8px}.capture-label{margin-top:12px;gap:6px}.capture h3{font-size:12px;line-height:1.45}.capture-index{font-size:8px}.capture-caption{font-size:10px;line-height:1.65;margin-top:5px}.zoom-hint{display:none}.gallery-end{margin-top:32px;font-size:9px}.author-section{padding-block:43px 42px}.author-grid{grid-template-columns:1fr;gap:38px}.author-section h2{font-size:30px;margin-bottom:14px}.author-description{font-size:13px;line-height:1.8;margin-bottom:19px}.project-detail{padding-block:17px}.project-detail p{font-size:12px}.footer{font-size:9px;padding-block:21px;gap:20px}.footer strong{font-size:9px}.viewer-header{min-height:78px;padding:15px 14px;gap:10px}.viewer-heading h2{font-size:14px}.viewer-counter{font-size:10px}.viewer-controls{gap:7px}.icon-button{min-width:35px;height:36px;padding:0 9px}.zoom-button{font-size:10px}.viewer-canvas{padding:14px 36px}.viewer-prev{left:3px}.viewer-next{right:3px}.viewer-nav{min-width:30px;width:30px;padding:0;border-color:#38506499;background:#142230c9}.viewer-footer{min-height:72px;padding:14px 16px}.viewer-caption{font-size:11px}.viewer-image-wrap{min-height:100%}#viewer-image{max-height:calc(100dvh - 188px)}.is-zoomed .viewer-canvas{padding-inline:12px}.is-zoomed .viewer-nav{opacity:.65}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.capture-button:hover,.button:hover{transform:none}.hero-shot:hover{translate:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Navegación principal">
+      <a class="brand" href="#" aria-label="Nexus, inicio"><img src="nexus-logo.png" alt="" width="37" height="37"><span>NEXUS</span></a>
+      <div class="nav-links"><a href="#producto">El proyecto</a><a href="#galeria">Galería</a><a href="#autor">Autor</a></div>
+      <span class="status">En desarrollo</span>
+    </nav>
+  </header>
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <div class="eyebrow">Estudio creativo con IA</div>
+          <h1 id="hero-title">De la idea<span>al montaje.</span></h1>
+          <p>Conversa, genera y edita. Un agente creativo, tus modelos y tus materiales, conectados en un mismo espacio.</p>
+          <div class="hero-actions">
+            <a class="button" href="#galeria">Ver las 17 pantallas <span aria-hidden="true">↘</span></a>
+            <a class="text-link" href="#producto">Conocer el proyecto <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-meta"><span>Capturas reales</span><span class="divider" aria-hidden="true"></span><span>Android</span><span class="divider" aria-hidden="true"></span><span>26 nov 2026</span></div>
+        </div>
+        <div class="hero-collage" aria-label="Tres vistas reales de Nexus. Selecciona una para ampliarla.">
+          <a class="hero-shot left" href="assets/screenshots/agente-resultados.jpg" data-open="agente-resultados" aria-label="Ampliar los resultados visuales del agente"><img src="assets/screenshots/agente-resultados.jpg" alt="Respuesta del agente con una selección de imágenes cinematográficas" width="709" height="1536" decoding="async"></a>
+          <a class="hero-shot center" href="assets/screenshots/agente-inicio.jpg" data-open="agente-inicio" aria-label="Ampliar el inicio del agente"><img src="assets/screenshots/agente-inicio.jpg" alt="Pantalla de inicio de Nexus con su logo y propuestas creativas" width="709" height="1536" fetchpriority="high"></a>
+          <a class="hero-shot right" href="assets/screenshots/cut-agente.jpg" data-open="cut-agente" aria-label="Ampliar el editor Nexus Cut"><img src="assets/screenshots/cut-agente.jpg" alt="Nexus Cut con previsualización, línea de tiempo y agente" width="709" height="1536" decoding="async"></a>
+          <div class="collage-label"><span aria-hidden="true"></span>La aplicación, tal como se usa<span aria-hidden="true"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product section-rule wrap" id="producto" aria-labelledby="product-title">
+      <div class="section-top">
+        <div><p class="section-kicker">Un mismo espacio de trabajo</p><h2 id="product-title">Las herramientas se conectan.<br>La idea sigue siendo tuya.</h2></div>
+        <p class="section-note">Nexus reúne conversación, generación multimedia, guion y edición. Los proyectos y sus materiales dan contexto a cada paso.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-item"><span class="product-number">01 / PLANTEA</span><h3>Trabaja con el agente</h3><p>Conversa, adjunta referencias y encuentra materiales. Sigue su actividad y revisa las generaciones que prepara.</p></div>
+        <div class="product-item"><span class="product-number">02 / CREA</span><h3>Elige cómo generar</h3><p>Explora ArtBox y ajusta cada encargo con las opciones del modelo: referencias, formato, duración y resolución.</p></div>
+        <div class="product-item"><span class="product-number">03 / MONTA</span><h3>Da forma al resultado</h3><p>Organiza el material y edita en Nexus Cut, con pistas de vídeo y audio y un agente dentro del propio montaje.</p></div>
+      </div>
+    </section>
+
+    <section class="gallery-section wrap" id="galeria" aria-labelledby="gallery-title">
+      <div class="section-top gallery-heading">
+        <div><p class="section-kicker">Dentro de Nexus</p><h2 id="gallery-title">Cada pantalla, en detalle.</h2></div>
+        <p class="section-note">17 capturas originales de Android<span>26 de noviembre de 2026 · Toca una imagen para ampliarla</span></p>
+      </div>
+      <div class="filter-row">
+        <div class="filters" role="group" aria-label="Filtrar capturas por espacio">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">Todas<span class="filter-count">17</span></button>
+          <button class="filter" type="button" data-filter="agente" aria-pressed="false">Agente<span class="filter-count">4</span></button>
+          <button class="filter" type="button" data-filter="crear" aria-pressed="false">ArtBox y generación<span class="filter-count">4</span></button>
+          <button class="filter" type="button" data-filter="material" aria-pressed="false">Materiales<span class="filter-count">3</span></button>
+          <button class="filter" type="button" data-filter="cut" aria-pressed="false">Nexus Cut<span class="filter-count">3</span></button>
+          <button class="filter" type="button" data-filter="flow" aria-pressed="false">Flow<span class="filter-count">2</span></button>
+          <button class="filter" type="button" data-filter="ajustes" aria-pressed="false">Ajustes<span class="filter-count">1</span></button>
+        </div>
+        <span class="result-count" id="result-count" aria-live="polite" aria-atomic="true">17 vistas</span>
+      </div>
+      <div class="gallery-grid" id="gallery-grid">
+        <article class="capture" data-category="agente" id="agente-inicio">
+          <a class="capture-button" href="assets/screenshots/agente-inicio.jpg" data-open="agente-inicio" aria-label="Ampliar: Tu espacio creativo"><img src="assets/screenshots/agente-inicio.jpg" alt="Inicio del agente de Nexus con propuestas creativas y selector de modelo" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Tu espacio creativo</h3><span class="capture-index">01</span></div><p class="capture-caption">Inicia una conversación y plantea lo que quieres crear.</p>
+        </article>
+        <article class="capture" data-category="agente" id="agente-actividad">
+          <a class="capture-button" href="assets/screenshots/agente-actividad.jpg" data-open="agente-actividad" aria-label="Ampliar: El agente en marcha"><img src="assets/screenshots/agente-actividad.jpg" alt="Actividad del agente: preparación de respuesta, búsqueda en la biblioteca y análisis" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>El agente en marcha</h3><span class="capture-index">02</span></div><p class="capture-caption">Sigue los pasos de su trabajo mientras consulta tus materiales.</p>
+        </article>
+        <article class="capture" data-category="agente" id="agente-resultados">
+          <a class="capture-button" href="assets/screenshots/agente-resultados.jpg" data-open="agente-resultados" aria-label="Ampliar: Respuestas con imágenes"><img src="assets/screenshots/agente-resultados.jpg" alt="Respuesta del agente acompañada de un mosaico de imágenes de una comisaría de época" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Respuestas con imágenes</h3><span class="capture-index">03</span></div><p class="capture-caption">Los resultados de la biblioteca aparecen dentro de la conversación.</p>
+        </article>
+        <article class="capture" data-category="agente" id="agente-generacion">
+          <a class="capture-button" href="assets/screenshots/agente-generacion.jpg" data-open="agente-generacion" aria-label="Ampliar: Revisa antes de generar"><img src="assets/screenshots/agente-generacion.jpg" alt="Tarjeta de generación preparada por el agente con referencias, formato, duración y coste" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Revisa antes de generar</h3><span class="capture-index">04</span></div><p class="capture-caption">Comprueba referencias, parámetros y coste antes de confirmar el encargo.</p>
+        </article>
+        <article class="capture" data-category="crear" id="artbox-video">
+          <a class="capture-button" href="assets/screenshots/artbox-video.jpg" data-open="artbox-video" aria-label="Ampliar: ArtBox, vídeo"><img src="assets/screenshots/artbox-video.jpg" alt="Catálogo de familias de modelos de vídeo en ArtBox" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>ArtBox · Vídeo</h3><span class="capture-index">05</span></div><p class="capture-caption">Explora las familias de modelos de vídeo desde un catálogo común.</p>
+        </article>
+        <article class="capture" data-category="crear" id="artbox-imagen">
+          <a class="capture-button" href="assets/screenshots/artbox-imagen.jpg" data-open="artbox-imagen" aria-label="Ampliar: ArtBox, imagen"><img src="assets/screenshots/artbox-imagen.jpg" alt="Catálogo de familias de modelos de imagen en ArtBox" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>ArtBox · Imagen</h3><span class="capture-index">06</span></div><p class="capture-caption">Encuentra modelos de imagen y accede a sus opciones de creación.</p>
+        </article>
+        <article class="capture" data-category="crear" id="generacion-imagen">
+          <a class="capture-button" href="assets/screenshots/generacion-imagen.jpg" data-open="generacion-imagen" aria-label="Ampliar: Generación de imagen"><img src="assets/screenshots/generacion-imagen.jpg" alt="Lanzadera de imagen con descripción, imágenes de referencia, formato y coste estimado" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Generación de imagen</h3><span class="capture-index">07</span></div><p class="capture-caption">Describe la imagen, añade referencias y ajusta el formato.</p>
+        </article>
+        <article class="capture" data-category="crear" id="generacion-video">
+          <a class="capture-button" href="assets/screenshots/generacion-video.jpg" data-open="generacion-video" aria-label="Ampliar: Generación de vídeo"><img src="assets/screenshots/generacion-video.jpg" alt="Lanzadera de vídeo con referencias de imagen, audio y vídeo, duración y resolución" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Generación de vídeo</h3><span class="capture-index">08</span></div><p class="capture-caption">Configura referencias, duración, resolución y audio según el modelo.</p>
+        </article>
+        <article class="capture" data-category="material" id="guion-material">
+          <a class="capture-button" href="assets/screenshots/guion-material.jpg" data-open="guion-material" aria-label="Ampliar: Material del proyecto"><img src="assets/screenshots/guion-material.jpg" alt="Espacio Guion con la pestaña Material, buscador y filtros por proyecto, escena y plano" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Material del proyecto</h3><span class="capture-index">09</span></div><p class="capture-caption">Encuentra y organiza los archivos por proyecto, escena o plano.</p>
+        </article>
+        <article class="capture" data-category="material" id="visor-referencias">
+          <a class="capture-button" href="assets/screenshots/visor-referencias.jpg" data-open="visor-referencias" aria-label="Ampliar: Referencias a la vista"><img src="assets/screenshots/visor-referencias.jpg" alt="Visor de Nexus con seis referencias visuales distribuidas sobre un lienzo" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Referencias a la vista</h3><span class="capture-index">10</span></div><p class="capture-caption">Reúne varias imágenes en un visor donde puedes moverlas y ampliarlas.</p>
+        </article>
+        <article class="capture" data-category="material" id="biblioteca-video">
+          <a class="capture-button" href="assets/screenshots/biblioteca-video.jpg" data-open="biblioteca-video" aria-label="Ampliar: Biblioteca multimedia"><img src="assets/screenshots/biblioteca-video.jpg" alt="Biblioteca de Nexus filtrada por vídeo con miniaturas y duración de los clips" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Biblioteca multimedia</h3><span class="capture-index">11</span></div><p class="capture-caption">Consulta los clips y sus duraciones, filtra y reutiliza el material.</p>
+        </article>
+        <article class="capture" data-category="cut" id="cut-proyectos">
+          <a class="capture-button" href="assets/screenshots/cut-proyectos.jpg" data-open="cut-proyectos" aria-label="Ampliar: Tus montajes"><img src="assets/screenshots/cut-proyectos.jpg" alt="Pantalla de proyectos de Nexus Cut con montajes y acceso a crear uno nuevo" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Tus montajes</h3><span class="capture-index">12</span></div><p class="capture-caption">Retoma un montaje o crea uno nuevo desde Nexus Cut.</p>
+        </article>
+        <article class="capture" data-category="cut" id="cut-timeline">
+          <a class="capture-button" href="assets/screenshots/cut-timeline.jpg" data-open="cut-timeline" aria-label="Ampliar: Edición multipista"><img src="assets/screenshots/cut-timeline.jpg" alt="Editor Nexus Cut con previsualización, pistas de vídeo y audio y formas de onda" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Edición multipista</h3><span class="capture-index">13</span></div><p class="capture-caption">Trabaja con clips, pistas de audio y previsualización en la línea de tiempo.</p>
+        </article>
+        <article class="capture" data-category="cut" id="cut-agente">
+          <a class="capture-button" href="assets/screenshots/cut-agente.jpg" data-open="cut-agente" aria-label="Ampliar: El agente, dentro del editor"><img src="assets/screenshots/cut-agente.jpg" alt="Nexus Cut con el panel del agente abierto junto a la previsualización y la línea de tiempo" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>El agente, dentro del editor</h3><span class="capture-index">14</span></div><p class="capture-caption">Pide cambios al montaje desde el editor y conserva la posibilidad de deshacerlos.</p>
+        </article>
+        <article class="capture" data-category="flow" id="flow-biblioteca">
+          <a class="capture-button" href="assets/screenshots/flow-biblioteca.jpg" data-open="flow-biblioteca" aria-label="Ampliar: Tus proyectos de Flow"><img src="assets/screenshots/flow-biblioteca.jpg" alt="Vista integrada de Google Flow mostrando una cuadrícula de proyectos" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Tus proyectos de Flow</h3><span class="capture-index">15</span></div><p class="capture-caption">Accede a los proyectos de Google Flow desde su vista integrada.</p>
+        </article>
+        <article class="capture" data-category="flow" id="flow-proyecto">
+          <a class="capture-button" href="assets/screenshots/flow-proyecto.jpg" data-open="flow-proyecto" aria-label="Ampliar: Flow, dentro de Nexus"><img src="assets/screenshots/flow-proyecto.jpg" alt="Un proyecto audiovisual de Google Flow abierto dentro de Nexus" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>Flow, dentro de Nexus</h3><span class="capture-index">16</span></div><p class="capture-caption">Consulta los planos y materiales de un proyecto sin salir de Nexus.</p>
+        </article>
+        <article class="capture" data-category="ajustes" id="ajustes">
+          <a class="capture-button" href="assets/screenshots/ajustes.jpg" data-open="ajustes" aria-label="Ampliar: A tu manera"><img src="assets/screenshots/ajustes.jpg" alt="Ajustes de Nexus: personalización, proyectos, agentes, proveedores, automatización y sistema" width="709" height="1536" loading="lazy" decoding="async"><span class="zoom-hint" aria-hidden="true">+</span></a>
+          <div class="capture-label"><h3>A tu manera</h3><span class="capture-index">17</span></div><p class="capture-caption">Configura la apariencia, los agentes, los proveedores y la automatización.</p>
+        </article>
+      </div>
+      <div class="gallery-end">Imágenes originales · Interfaz real de la aplicación</div>
+    </section>
+
+    <section class="author-section" id="autor" aria-labelledby="author-title">
+      <div class="author-grid wrap">
+        <div>
+          <p class="section-kicker">Un proyecto de</p><h2 id="author-title">Vidal Domínguez<br>Rodríguez</h2>
+          <p class="author-description">Concepto de producto, diseño de experiencia, desarrollo Android y Windows e integración de servicios de IA.</p>
+          <div class="author-links"><a class="text-link" href="https://www.linkedin.com/in/vidal-dominguez-rodriguez/" target="_blank" rel="noopener noreferrer">Hablemos en LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/egodivergente/nexus-showcase" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div>
+          <div class="project-detail"><h3>Desarrollo activo</h3><p>Nexus todavía no está disponible para descarga pública. Esta página presenta el producto y su evolución.</p></div>
+          <div class="project-detail"><h3>Android y Windows</h3><p>Las capturas corresponden a Android. El proyecto también cuenta con una aplicación de escritorio para Windows; las funciones varían entre plataformas y versiones.</p></div>
+          <div class="project-detail"><h3>Tecnología</h3><p>Kotlin y Jetpack Compose en Android, con núcleos Kotlin para el agente y la edición. Python, interfaz web y agente JVM en Windows.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><div><strong>NEXUS</strong> &nbsp;·&nbsp; Vidal Domínguez Rodríguez</div><a href="#">Volver al inicio ↑</a></footer>
+
+  <dialog id="image-dialog" aria-labelledby="viewer-title" aria-describedby="viewer-caption">
+    <header class="viewer-header">
+      <div class="viewer-heading"><h2 id="viewer-title">Nexus en detalle</h2><span class="viewer-counter" id="viewer-counter" aria-live="polite" aria-atomic="true"></span></div>
+      <div class="viewer-controls"><button class="icon-button zoom-button" id="viewer-zoom" type="button" aria-pressed="false" aria-label="Ampliar imagen a su tamaño original">Ampliar <span aria-hidden="true">+</span></button><button class="icon-button" id="viewer-close" type="button" aria-label="Cerrar visor">×</button></div>
+    </header>
+    <div class="viewer-body">
+      <div class="viewer-canvas" id="viewer-canvas"><div class="viewer-image-wrap"><img id="viewer-image" alt=""></div></div>
+      <button class="icon-button viewer-nav viewer-prev" id="viewer-prev" type="button" aria-label="Ver captura anterior">‹</button>
+      <button class="icon-button viewer-nav viewer-next" id="viewer-next" type="button" aria-label="Ver captura siguiente">›</button>
+    </div>
+    <footer class="viewer-footer"><p class="viewer-caption" id="viewer-caption"></p><p class="viewer-help">← → para navegar · Esc para cerrar</p></footer>
+  </dialog>
+
+  <script>
+    (() => {
+      const cards = [...document.querySelectorAll('.capture')];
+      const entries = cards.map(card => ({
+        id: card.id,
+        category: card.dataset.category,
+        title: card.querySelector('h3').textContent,
+        caption: card.querySelector('.capture-caption').textContent,
+        src: card.querySelector('img').getAttribute('src'),
+        alt: card.querySelector('img').alt
+      }));
+      const filters = [...document.querySelectorAll('.filter')];
+      const counter = document.getElementById('result-count');
+      const dialog = document.getElementById('image-dialog');
+      const viewerImage = document.getElementById('viewer-image');
+      const viewerCanvas = document.getElementById('viewer-canvas');
+      const zoomButton = document.getElementById('viewer-zoom');
+      let activeFilter = 'all';
+      let viewerEntries = entries;
+      let current = 0;
+      let lastFocus = null;
+
+      filters.forEach(button => button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        filters.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
+        let count = 0;
+        cards.forEach(card => {
+          card.hidden = activeFilter !== 'all' && card.dataset.category !== activeFilter;
+          if (!card.hidden) count++;
+        });
+        counter.textContent = `${count} ${count === 1 ? 'vista' : 'vistas'}`;
+      }));
+
+      function setZoom(zoomed) {
+        dialog.classList.toggle('is-zoomed', zoomed);
+        zoomButton.setAttribute('aria-pressed', String(zoomed));
+        zoomButton.setAttribute('aria-label', zoomed ? 'Ajustar imagen a la pantalla' : 'Ampliar imagen a su tamaño original');
+        zoomButton.replaceChildren(document.createTextNode(zoomed ? 'Ajustar −' : 'Ampliar +'));
+        viewerCanvas.scrollTop = 0;
+        viewerCanvas.scrollLeft = 0;
+      }
+
+      function renderViewer() {
+        const entry = viewerEntries[current];
+        setZoom(false);
+        viewerImage.src = entry.src;
+        viewerImage.alt = entry.alt;
+        document.getElementById('viewer-title').textContent = entry.title;
+        document.getElementById('viewer-caption').textContent = entry.caption;
+        document.getElementById('viewer-counter').textContent = `${current + 1} / ${viewerEntries.length} · Android · 26 nov 2026`;
+        const single = viewerEntries.length < 2;
+        document.getElementById('viewer-prev').hidden = single;
+        document.getElementById('viewer-next').hidden = single;
+      }
+
+      function step(direction) {
+        current = (current + direction + viewerEntries.length) % viewerEntries.length;
+        renderViewer();
+      }
+
+      document.querySelectorAll('[data-open]').forEach(link => link.addEventListener('click', event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || typeof dialog.showModal !== 'function') return;
+        event.preventDefault();
+        lastFocus = link;
+        viewerEntries = activeFilter === 'all' || link.classList.contains('hero-shot') ? entries : entries.filter(entry => entry.category === activeFilter);
+        current = viewerEntries.findIndex(entry => entry.id === link.dataset.open);
+        if (current < 0) return;
+        renderViewer();
+        dialog.showModal();
+        document.body.classList.add('modal-open');
+        document.getElementById('viewer-close').focus();
+      }));
+
+      document.getElementById('viewer-close').addEventListener('click', () => dialog.close());
+      document.getElementById('viewer-prev').addEventListener('click', () => step(-1));
+      document.getElementById('viewer-next').addEventListener('click', () => step(1));
+      zoomButton.addEventListener('click', () => setZoom(!dialog.classList.contains('is-zoomed')));
+      viewerImage.addEventListener('click', () => setZoom(!dialog.classList.contains('is-zoomed')));
+      dialog.addEventListener('close', () => {
+        document.body.classList.remove('modal-open');
+        if (lastFocus?.isConnected) lastFocus.focus({preventScroll: true});
+      });
+      dialog.addEventListener('click', event => {
+        if (event.target === dialog || event.target === viewerCanvas || event.target.classList.contains('viewer-image-wrap')) dialog.close();
+      });
+      dialog.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); step(-1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); step(1); }
+        if (event.key === 'Home') { event.preventDefault(); current = 0; renderViewer(); }
+        if (event.key === 'End') { event.preventDefault(); current = viewerEntries.length - 1; renderViewer(); }
+      });
+    })();
+  </script>
+</body>
+</html>
